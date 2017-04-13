@@ -1,0 +1,20 @@
+<!-- Header & Footer -->
+\fancyfoot[CO,LE]{`r params$kurssi` : `r params$harjoitus`}
+\fancyfoot[LE,RO]{\thepage}
+
+<!-- Etusivu -->
+\begin{titlepage}
+	\centering
+	\begin{tabular}{|p{2.0cm}|p{5.0cm}|p{8.0cm}|}
+  \hline `r params$koulu`  &   `r params$kurssi`        &  `r params$pvm`\\
+  \hline      &                               &  \mbox{`r params$oppilas1`} \\
+              &  `r params$harjoitus`        & \\
+              &                               &  \mbox{`r params$oppilas2`} \\
+              &                               & \\
+  \hline
+  \end{tabular}
+\end{titlepage}
+
+<!-- Sisällysluettelo -->
+\tableofcontents
+\newpage

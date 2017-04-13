@@ -1,0 +1,5 @@
+# Skip pdf files from git
+*.pdf
+
+# Skip OSX crap
+.DS_Store

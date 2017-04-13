@@ -1,0 +1,44 @@
+---
+# Muokkaa näihin omat tietosi
+params:
+  koulu: TTY
+  kurssi: FYS-1010 - Fysiikan työt I
+  harjoitus: Vauhtipyörä
+  pvm: 13.4.2017
+  oppilas1: 654321 - Teppo Tekijä - Tietotekniikka
+  oppilas2: 123456 - Matti Mainio - Sähkötekniikka
+  
+# Fonttikoko ja marginaalit
+fontsize: 12pt
+geometry: left=34mm,right=34mm
+
+# PDF:n tulostukseen sääntöjä
+output: 
+  pdf_document:
+    number_sections: yes
+    includes:
+      # Lataa muutama ylimääräinen paketti tyylitykseen ja Suomen kielen käyttämiseen
+      in_header: includes/packages.tex
+---
+<!-- Hae Etusivu ja sisällysluettelo omasta tiedostosta -->
+```{r child = 'includes/base.Rmd'}
+```
+
+<!-- Kirjoita työselostus tästä eteenpäin -->
+# Työselostus
+
+## Johdanto
+
+## Teoria
+
+## Työn suoritus
+
+## Mittaustulokset ja havainnot
+
+## Tulosten laskenta
+
+## Yhteenveto
+
+## Kirjallisuusviitteet
+
+## Liitteet
