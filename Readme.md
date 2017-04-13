@@ -5,9 +5,7 @@
 Ei hätää koska R Markdown pystyy lähes mihin tahansa.
 
 ## Mitä tarvitsee olla asennettuna?
-Jotta .Rmd tiedostot voidaan muuttaa pdf:ksi koneellasi täytyy olla asennetuna:
-
-[RStudio](https://www.rstudio.com/products/rstudio/download/).
+Jotta .Rmd tiedostot voidaan muuttaa pdf:ksi koneellasi täytyy olla asennetuna: [RStudio](https://www.rstudio.com/products/rstudio/download/).
 
 Jos käytät Mäkkiä, voit asentaa sen kätevästi tällä unix-loitsulla:
 ```bash
