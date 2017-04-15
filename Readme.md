@@ -10,6 +10,8 @@ Jotta .Rmd tiedostot voidaan muuttaa pdf:ksi koneellasi täytyy olla asennetuna:
 Jos käytät Mäkkiä, voit asentaa sen kätevästi tällä unix-loitsulla:
 ```bash
 $ brew cask install rstudio
+# Lainausten käsittelyyn
+$ brew install pandoc-citeproc
 ```
 
 ## Kuinka luon pdf:n tekemästäni raportista?
