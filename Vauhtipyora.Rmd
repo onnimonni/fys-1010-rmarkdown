@@ -1,0 +1,157 @@
+---
+institute: TTY
+course: FYS-1010 Fysiikan työt I
+title: 2.1 Vauhtipyörä
+author:
+- name: Onni Hakala
+  id: 218486
+  program: Tietotekniikka
+- name: Pyry Vehmas
+  id: 242160
+  program: Automaatiotekniikka
+
+assistant: MA
+  
+date: 4.4.2017
+output: 
+  pdf_document:
+    citation_package: natbib
+    toc: true
+    number_sections: yes
+    keep_tex: true
+    fig_caption: true
+    template: includes/report.tex
+---
+<!-- Kirjoita työselostus tästä eteenpäin -->
+<!-- Rivin vaihdon saa tehtyä kun laittaa 2 välilyöntiä rivin loppuun -->
+# Vauhtipyörä
+Tämän työn tarkoituksena oli selvittää vauhtipyörän hitausmomentti pyörimisakselinsa suhteen pyörimisliikkeessä, että heilahdusliikkeessä. Lisäksi määritimme kyseessä olevan hitausmomentin myös laskennellasesti.
+
+# Johdanto
+Hitausmomentti eli inertiamomentti (tunnus $J$ tai $I$) vastaa pyörivässä liikkeessä etenemisliikkeen massaa. Hitausmomentin SI-järjestelmän mukainen yksikkö on $kg\cdot m^2$ (kilogramma kertaa metri toiseen). Mitä suurempi kappaleen hitausmomentti on, sitä suurempi momentti vaaditaan, jotta kappale saadaan kiihtymään halutulla kulmakiihtyvyydellä.[^1]
+
+# Teoria
+
+## Hitausmomentti pyörimisliikkeestä
+Energiataseen kaava energiaperiaatteen mukaisesti:
+$$ \tag{1} mgh = \frac{1}{2}I_c\omega^2 + \frac{1}{2}mv^2+F_{\mu}n_12\pi\rho $$
+jossa $m$ on punnuksen massa, $g$ on putoamiskiihtyvyys, $h$ on punnuksen korkeus maasta, $Ic$ on pyörimisliikkeen hitausmomentti, $\omega$ on kulmanopeus, $v$ on ratanopeus, $F_\mu$ on liikekitka, $n_1$ on vauhtipyörän pyörähdysten lukumäärä punnuksen pudotessa ja $\rho$ on akselin poikkileikkauksen säde.  
+Punnuksen pudottua maahan, kitkasta johtuen vauhtipyörän pyörimisenergia muuttuu lämmöksi. Tämän aikana vauhtipyörä pyörii $n_2$ kierrosta.
+
+$$ \tag{2} \frac{1}{2}I_c\omega^2=F_\mu n_2 2\pi\rho $$
+  
+Yhdistämme yhtälöt ja saamme eliminoitua kitkan. Tämän jälkeen sijoitetaan $\omega = \frac{v}{r}$. Sijoitetaan $v=2\frac{h}{t}$, koska tasaisesti kiihtyvän liikkeen loppunopeus on kaksi kertaa keskinopeus. Näiden operaatioiden jälkeen yhtälö saadaan muotoon:
+
+$$ \label{hitausmomenttipyorii} \tag{3} I_c=mr^2(\frac{gt^2}{2h}-1)(\frac{n_2}{n_2+n_1})$$
+
+## Hitausmomentti heilahdusliikkeestä
+
+Heilahdusjakson ajalle pätee kaava $I_z=I_c+Mb2$, missä
+$$ \tag{4} I_z = \frac{T^2Mgb}{4\pi^2} $$  
+Kaavaa käyttäen voimme johtaa hitausmomentin $I_c$:
+$$ \label{hitausmomenttiheiluri}\tag{5} I_c = \frac{T^2Mgb}{4\pi^2} - Mb^2$$
+
+## Hitausmomentti laskennallisesti
+
+Hitausmomentti saadaan laskennallisesti kaavasta:
+$$ \label{hitausmomentti3} \tag{6} I_c = \frac{1}{2}MR^2 $$
+
+# Työn suoritus
+
+## Pyörimisliike
+Mittasimme hitausmomentin pyörimisliikkeen avulla kiinnittämällä vauhtipyörän statiiviin ja laitoimme narun kiinni punnukseen. Mittasimme punnuksen massan digitaalisella vaa'alla. Valitsimme pudotuskorkeuden h mahdollisimman korkeaksi $h=43,5\pm0.1 cm$, jotta reaktioajasta aiheutuva virhe olisi mahdollisimman pieni. Mittasimme sen rullamitalla.
+
+Mittasimme sekuntikelloa käyttäen ajan $t$, joka punnukselta kuluu putoamisen aikana. Toistimme kokeen monta kertaa virheen pienentämiseksi.  
+Narukehän halkaisija mitattiin työntömitalla.  
+Laskimme molemmat, kuinka monta kierrosta $n_1$ vauhtipyörä pyörii punnuksen putoamisen jälkeen.
+
+## Heilahdusliike
+Liikutimme vauhtipyörää alemmaksi statiivissa hitausmomentin laskemiseen heilahdusliikeen jaksonajan avulla. Tällä saimme vähennettyä statiivin resonointia ja värinää. Värinän vähentämiseksi käytimme heilahdusliikkeeseen hyvin pientä heilahduskulmaa.  
+Mittasimme sekuntikellolla kymmenen heilahduksen kokonaisjaksonajan $10T$ vähentääksemme reaktionopeudesta aiheutuvaa virhettä. Jakamalla kokonaisaika kymmenellä jaksonajalla saatiin yhden jaksonaika $T$. Koe toistettiin kahdeksan kertaa.  
+
+Mittasimme työntömitalla vauhtipyörän kiinnityskohdan etäisyyden $b$ vauhtipyörän keskipisteestä. Käytimme digitaalivaakaa massan $M$ mittaamiseen ja rullamittaa vauhtipyörän halkaisijan selvittämiseen.
+
+## Laskennallinen määritys
+Laskimme vauhtipyörän hitausmomentin kaavaa $\eqref{hitausmomentti3}$.
+
+# Mittaustulokset ja havainnot
+
+## Pyörimisliike
+
+Mittasimme kaikki vakiot ohessa näkyvään taulukkoon.
+
+
+| Suure     | Tulos | tarkkuus  |
+| :-------- | ----- | --------- |
+| $h/cm$    | 42,7  | $\pm0.1$  |
+| $n_1/kpl$ | 2,5   | $\pm1/12$ |
+| $m/g$     | 95,7  | $\pm0.1$  |
+| $2r/mm$   | 54,1  | $\pm0.1$  |
+
+
+Mittaustuloksiin vaikutti se, että joissain mittauksissa vauhtipyörä alkoi resonoida, joka aiheutti ylimääräistä kitkaa, jonka takia sen vauhti hidastui. Mittauksissa **2-6** vauhtipyörän resonointi vähensi kierroksia merkittävästi.
+
+| $t$      | $t/s$    | $n_2/kpl$  |
+| -------- | -------- | ---------- |
+| 1        | 2,22     | 12,5       |
+| 2        | 2,12     | 11,125     |
+| 3        | 2,10     | 10,125     |
+| 4        | 2,14     | 11,25      |
+| 5        | 2,13     | 9,625      |
+| 6        | 2,31     | 10,5       |
+| tarkkuus | $\pm0.1$ | $\pm0.125$ |
+
+\newpage
+## Heilahdusliike
+
+Mittasimme heilahduskeskiön $b$ mittaamalla reikien välisen minimi- ja maksimietäisyyden. $2R_{min}=8.75cm$ $2R_{max}=9.91$ eli $b= \frac{2R_{min}+2R_{max}}{2\cdot2} \approx 9,33cm$.
+
+**Mitatut vakiot:**
+
+| suure   | tulos | tarkkuus |
+| ------- | ----- | -------- |
+| `b/mm`  | 93.3  | $\pm0.1$ |
+| `M/g`   | 801.0 | $\pm0.1$ |
+| `2R/mm` | 197.0 | $\pm0.3$ |
+
+**Mitatut jaksonajat:**
+
+| $t$      | $10 T/s$ | $T/s$     |
+| -------- | -------- | --------- |
+| 1        | 8,12     | 0,812     |
+| 2        | 7,72     | 0,772     |
+| 3        | 7,72     | 0,772     |
+| 4        | 7,97     | 0.797     |
+| 5        | 7,87     | 0.787     |
+| tarkkuus | $\pm0.1$ | $\pm0.01$ |
+
+## Laskennallinen määritys
+Pyörän säteen $R$ mittaamista varten mittasimme halkaisijan $2R=197mm=0.197m$ ja massan $M=801g=0.801kg$
+
+# Tulosten laskenta
+Mittaustuloksista laskettiin keskiarvot hitausmomentin laskemista varten.
+
+## Pyörimisliike
+Punnuksen putoamiseen kuluvan ajan keskiarvoksi saatiin $t=2.17s$ ja vauhtipyörän kierrosten keskiarvoksi saatiin $n_2=10.85$.  
+Hitausmomentin suuruudeksi pyörimisliikkeen avulla määritettynä saatiin kaavan $\eqref{hitausmomenttipyorii}$ avulla $I_c = 0,0048kg\cdot m^2$.  
+
+## Heilahdusliike
+Heilahdusliikkeen heilahduksen jaksonajan keskiarvoksi saatiin $T=0.788s$.  
+Hitausmomentin suuruudeksi heilahdusliikkeen avulla määritettynä saatiin kaavan $\eqref{hitausmomenttiheiluri}$ avulla laskettuna $I_c = 0,00455kg\cdot m^2$.
+
+## Laskennallinen määritys
+Laskennallisesti määritettynä hitausmomentin suuruudeksi saatiin kaavan $\eqref{hitausmomentti3}$ avulla $I_c = 0,0039kg\cdot m^2$. 
+
+# Yhteenveto
+Eri mittaustavoilla lasketuista hitausmomentin arvoista saadaan suhteellisen samat arvot, eli mittauksissa on onnistuttu. Eniten muista eroava tulos saatiin pyörimisliike mittauksella. Tämä selittynee kuitenkin, sillä että havaitsimme mittauksen aikana resonointia mittaus laitteessa, joka voi vaikuttaa tulokseen. Pääpiirteittäin mittauksissa kuitenkin onnistuttiin hyvin ja saadut tulokset ovat haluttuja.
+
+# Kirjallisuusviitteet
+[^1]: https://fi.wikipedia.org/wiki/Hitausmomentti
+
+1. https://fi.wikipedia.org/wiki/Hitausmomentti
+2. Fysiikan työt I –työohje, 2.1 Vauhtipyörä [Moodle-oppimisalusta]. Saatavissa: https://moodle2.tut.fi/ > FYS-1010 > Aineistot > Työohjeet > Vauhtipyörä.
+3. Fysiikan työt I –opintomoniste, 2.1 Vauhtipyörä [Moodle-oppimisalusta]. Saatavissa: https://moodle2.tut.fi/ > FYS-1010 > Aineistot > Opintomoniste > Vauhtipyörä.
+
+# Liitteet
+
+1. Mittauspyötäkirja

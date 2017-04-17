@@ -1,0 +1,409 @@
+\documentclass[]{article}
+\newcommand*{\authorfont}{\fontfamily{phv}\selectfont}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[finnish]{babel}                 % Suomenkielinen tavutus ja otsikot
+\usepackage[left=34mm,right=34mm]{geometry} % Näillä säädät kätevästi sivun marginaalit
+\usepackage{pslatex}                        % makes the entire document to use ps fonts => pdf looks better
+
+%\usepackage[dvips]{graphicx}
+\usepackage{psfrag}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{amsmath}                        % kaavojen lisäominaisuuksia
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{tabularx}
+\usepackage{epsfig}
+\usepackage{color}
+\usepackage{verbatim}
+\usepackage{rotating}
+\usepackage{multirow}
+\usepackage{enumerate}
+\usepackage{layout}
+\usepackage{cite}
+\usepackage{wrapfig}                       % Tällä saa tekstin kiertämään kuvan tarvittaessa
+\usepackage[tight]{subfigure}
+
+% Header ja footer
+\usepackage{fancyhdr}                       % ylä- ja alatunnisteet tarvittaessa (fancy headers)
+\pagestyle{fancy}
+
+\usepackage{abstract}
+\renewcommand{\abstractname}{}    % clear the title
+\renewcommand{\absnamepos}{empty} % originally center
+
+\renewenvironment{abstract}
+ {{%
+    \setlength{\leftmargin}{0mm}
+    \setlength{\rightmargin}{\leftmargin}%
+  }%
+  \relax}
+ {\endlist}
+
+\makeatletter
+\def\@maketitle{%
+  \newpage
+%  \null
+%  \vskip 2em%
+%  \begin{center}%
+  \let \footnote \thanks
+    {\fontsize{18}{20}\selectfont\raggedright  \setlength{\parindent}{0pt} \@title \par}%
+}
+%\fi
+\makeatother
+
+
+
+\setcounter{secnumdepth}{0}
+
+\usepackage{longtable,booktabs}
+
+
+% Change font family
+%\renewcommand*\rmdefault{ppl}
+
+% Add tightlist so that pandoc can convert lists to this latex template
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+\title{2.1 Vauhtipyörä  }
+
+
+
+\author{\Large Onni Hakala\vspace{0.05in} \newline\normalsize\emph{218486} \newline\normalsize\emph{Tietotekniikka}   \and \Large Pyry Vehmas\vspace{0.05in} \newline\normalsize\emph{242160} \newline\normalsize\emph{Automaatiotekniikka}  }
+
+
+\date{}
+
+\usepackage{titlesec}
+
+\titleformat*{\section}{\normalsize\bfseries}
+\titleformat*{\subsection}{\normalsize\bfseries}
+\titleformat*{\subsubsection}{\normalsize\bfseries}
+\titleformat*{\paragraph}{\normalsize\itshape}
+\titleformat*{\subparagraph}{\normalsize\itshape}
+
+% Start new page after every section
+\newcommand{\sectionbreak}{\clearpage}
+
+\makeatletter
+\@ifpackageloaded{hyperref}{}{%
+\ifxetex
+  \usepackage[setpagesize=false, % page size defined by xetex
+              unicode=false, % unicode breaks when used with xetex
+              xetex]{hyperref}
+\else
+  \usepackage[unicode=true]{hyperref}
+\fi
+}
+\@ifpackageloaded{color}{
+    \PassOptionsToPackage{usenames,dvipsnames}{color}
+}{%
+    \usepackage[usenames,dvipsnames]{color}
+}
+\makeatother
+\hypersetup{breaklinks=true,
+            bookmarks=true,
+            pdfauthor={Onni Hakala () and Pyry Vehmas ()},
+            pdfkeywords = {},  
+            pdftitle={2.1 Vauhtipyörä},
+            colorlinks=true,
+            citecolor=blue,
+            urlcolor=blue,
+            linkcolor=blue,
+            pdfborder={0 0 0}}
+\urlstyle{same}  % don't use monospace font for urls
+
+
+
+\begin{document}
+
+% \pagenumbering{arabic}% resets `page` counter to 1 
+%
+% \maketitle
+\pagestyle{empty}
+
+
+\begin{center}
+    \bgroup
+    \renewcommand{\arraystretch}{2.0}
+    \begin{tabular}{ | p{2.0cm} | p{5cm} | p{7cm} |}
+    \hline
+    % Institute
+     TTY  &
+    % Course
+     FYS-1010 Fysiikan työt I  &
+    % Date
+     17.04.2017  \\ \hline
+    % Course assistant initials
+     MA  &
+    % Assignment
+     2.1 Vauhtipyörä  &
+    % Write all authors here
+    Onni Hakala - \emph{\small 218486} - \emph{\small Tietotekniikka}   \par Pyry Vehmas - \emph{\small 242160} - \emph{\small Automaatiotekniikka}    \\
+    \hline
+    \end{tabular}
+    \egroup
+\end{center}
+\newpage
+
+\pagestyle{plain}                       % Sivun tyylin määrittäminen (ei ylätunnisteita, eikä muutakaan)
+\pagenumbering{roman}                   % Sivunumeroinnin määrittäminen (Roomalaiset numerot alkuun)
+\setcounter{secnumdepth}{-1}            % Tällä komennolla edes luvut (chapter) eivät numeroidu sisällyslyetteloon
+
+\linespread{1.2}                        % Riviväli valinta sisällysluetteloa varten
+\selectfont                             % Tämä komento vaaditaan jotta ylläoleva rivivälin valinta tulee voimaan
+
+{
+\hypersetup{linkcolor=black}
+\setcounter{tocdepth}{2}
+\tableofcontents
+\newpage
+}
+
+\setcounter{secnumdepth}{2}            % Luvut ja alaluvut, chapters -> subsubsections, numeroituvat sisällyslyetteloon
+\linespread{1.3}                       % Rivivälin valinta tekstiin
+\selectfont                            % Tämä komento vaaditaan jotta ylläoleva rivivälin valinta tulee voimaan
+
+\pagenumbering{arabic}                 % Arabialaiset sivunumerot varsinaiseen tekstiosaan
+
+
+\vskip 6.5pt
+
+\noindent  \section{Vauhtipyörä}\label{vauhtipyora}
+
+Tämän työn tarkoituksena oli selvittää vauhtipyörän hitausmomentti
+pyörimisakselinsa suhteen pyörimisliikkeessä, että heilahdusliikkeessä.
+Lisäksi määritimme kyseessä olevan hitausmomentin myös laskennellasesti.
+
+\section{Johdanto}\label{johdanto}
+
+Hitausmomentti eli inertiamomentti (tunnus \(J\) tai \(I\)) vastaa
+pyörivässä liikkeessä etenemisliikkeen massaa. Hitausmomentin
+SI-järjestelmän mukainen yksikkö on \(kg\cdot m^2\) (kilogramma kertaa
+metri toiseen). Mitä suurempi kappaleen hitausmomentti on, sitä suurempi
+momentti vaaditaan, jotta kappale saadaan kiihtymään halutulla
+kulmakiihtyvyydellä.\footnote{\url{https://fi.wikipedia.org/wiki/Hitausmomentti}}
+
+\section{Teoria}\label{teoria}
+
+\subsection{Hitausmomentti
+pyörimisliikkeestä}\label{hitausmomentti-pyorimisliikkeesta}
+
+Energiataseen kaava energiaperiaatteen mukaisesti:
+\[ \tag{1} mgh = \frac{1}{2}I_c\omega^2 + \frac{1}{2}mv^2+F_{\mu}n_12\pi\rho \]
+jossa \(m\) on punnuksen massa, \(g\) on putoamiskiihtyvyys, \(h\) on
+punnuksen korkeus maasta, \(Ic\) on pyörimisliikkeen hitausmomentti,
+\(\omega\) on kulmanopeus, \(v\) on ratanopeus, \(F_\mu\) on liikekitka,
+\(n_1\) on vauhtipyörän pyörähdysten lukumäärä punnuksen pudotessa ja
+\(\rho\) on akselin poikkileikkauksen säde.\\
+Punnuksen pudottua maahan, kitkasta johtuen vauhtipyörän pyörimisenergia
+muuttuu lämmöksi. Tämän aikana vauhtipyörä pyörii \(n_2\) kierrosta.
+
+\[ \tag{2} \frac{1}{2}I_c\omega^2=F_\mu n_2 2\pi\rho \]
+
+Yhdistämme yhtälöt ja saamme eliminoitua kitkan. Tämän jälkeen
+sijoitetaan \(\omega = \frac{v}{r}\). Sijoitetaan \(v=2\frac{h}{t}\),
+koska tasaisesti kiihtyvän liikkeen loppunopeus on kaksi kertaa
+keskinopeus. Näiden operaatioiden jälkeen yhtälö saadaan muotoon:
+
+\[ \label{hitausmomenttipyorii} \tag{3} I_c=mr^2(\frac{gt^2}{2h}-1)(\frac{n_2}{n_2+n_1})\]
+
+\subsection{Hitausmomentti
+heilahdusliikkeestä}\label{hitausmomentti-heilahdusliikkeesta}
+
+Heilahdusjakson ajalle pätee kaava \(I_z=I_c+Mb2\), missä
+\[ \tag{4} I_z = \frac{T^2Mgb}{4\pi^2} \]\\
+Kaavaa käyttäen voimme johtaa hitausmomentin \(I_c\):
+\[ \label{hitausmomenttiheiluri}\tag{5} I_c = \frac{T^2Mgb}{4\pi^2} - Mb^2\]
+
+\subsection{Hitausmomentti
+laskennallisesti}\label{hitausmomentti-laskennallisesti}
+
+Hitausmomentti saadaan laskennallisesti kaavasta:
+\[ \label{hitausmomentti3} \tag{6} I_c = \frac{1}{2}MR^2 \]
+
+\section{Työn suoritus}\label{tyon-suoritus}
+
+\subsection{Pyörimisliike}\label{pyorimisliike}
+
+Mittasimme hitausmomentin pyörimisliikkeen avulla kiinnittämällä
+vauhtipyörän statiiviin ja laitoimme narun kiinni punnukseen. Mittasimme
+punnuksen massan digitaalisella vaa'alla. Valitsimme pudotuskorkeuden h
+mahdollisimman korkeaksi \(h=43,5\pm0.1 cm\), jotta reaktioajasta
+aiheutuva virhe olisi mahdollisimman pieni. Mittasimme sen rullamitalla.
+
+Mittasimme sekuntikelloa käyttäen ajan \(t\), joka punnukselta kuluu
+putoamisen aikana. Toistimme kokeen monta kertaa virheen
+pienentämiseksi.\\
+Narukehän halkaisija mitattiin työntömitalla.\\
+Laskimme molemmat, kuinka monta kierrosta \(n_1\) vauhtipyörä pyörii
+punnuksen putoamisen jälkeen.
+
+\subsection{Heilahdusliike}\label{heilahdusliike}
+
+Liikutimme vauhtipyörää alemmaksi statiivissa hitausmomentin laskemiseen
+heilahdusliikeen jaksonajan avulla. Tällä saimme vähennettyä statiivin
+resonointia ja värinää. Värinän vähentämiseksi käytimme
+heilahdusliikkeeseen hyvin pientä heilahduskulmaa.\\
+Mittasimme sekuntikellolla kymmenen heilahduksen kokonaisjaksonajan
+\(10T\) vähentääksemme reaktionopeudesta aiheutuvaa virhettä. Jakamalla
+kokonaisaika kymmenellä jaksonajalla saatiin yhden jaksonaika \(T\). Koe
+toistettiin kahdeksan kertaa.
+
+Mittasimme työntömitalla vauhtipyörän kiinnityskohdan etäisyyden \(b\)
+vauhtipyörän keskipisteestä. Käytimme digitaalivaakaa massan \(M\)
+mittaamiseen ja rullamittaa vauhtipyörän halkaisijan selvittämiseen.
+
+\subsection{Laskennallinen määritys}\label{laskennallinen-maaritys}
+
+Laskimme vauhtipyörän hitausmomentin kaavaa \(\eqref{hitausmomentti3}\).
+
+\section{Mittaustulokset ja
+havainnot}\label{mittaustulokset-ja-havainnot}
+
+\subsection{Pyörimisliike}\label{pyorimisliike-1}
+
+Mittasimme kaikki vakiot ohessa näkyvään taulukkoon.
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule
+Suure & Tulos & tarkkuus\tabularnewline
+\midrule
+\endhead
+\(h/cm\) & 42,7 & \(\pm0.1\)\tabularnewline
+\(n_1/kpl\) & 2,5 & \(\pm1/12\)\tabularnewline
+\(m/g\) & 95,7 & \(\pm0.1\)\tabularnewline
+\(2r/mm\) & 54,1 & \(\pm0.1\)\tabularnewline
+\bottomrule
+\end{longtable}
+
+Mittaustuloksiin vaikutti se, että joissain mittauksissa vauhtipyörä
+alkoi resonoida, joka aiheutti ylimääräistä kitkaa, jonka takia sen
+vauhti hidastui. Mittauksissa \textbf{2-6} vauhtipyörän resonointi
+vähensi kierroksia merkittävästi.
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule
+\(t\) & \(t/s\) & \(n_2/kpl\)\tabularnewline
+\midrule
+\endhead
+1 & 2,22 & 12,5\tabularnewline
+2 & 2,12 & 11,125\tabularnewline
+3 & 2,10 & 10,125\tabularnewline
+4 & 2,14 & 11,25\tabularnewline
+5 & 2,13 & 9,625\tabularnewline
+6 & 2,31 & 10,5\tabularnewline
+tarkkuus & \(\pm0.1\) & \(\pm0.125\)\tabularnewline
+\bottomrule
+\end{longtable}
+
+\newpage
+
+\subsection{Heilahdusliike}\label{heilahdusliike-1}
+
+Mittasimme heilahduskeskiön \(b\) mittaamalla reikien välisen minimi- ja
+maksimietäisyyden. \(2R_{min}=8.75cm\) \(2R_{max}=9.91\) eli
+\(b= \frac{2R_{min}+2R_{max}}{2\cdot2} \approx 9,33cm\).
+
+\textbf{Mitatut vakiot:}
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule
+suure & tulos & tarkkuus\tabularnewline
+\midrule
+\endhead
+\texttt{b/mm} & 93.3 & \(\pm0.1\)\tabularnewline
+\texttt{M/g} & 801.0 & \(\pm0.1\)\tabularnewline
+\texttt{2R/mm} & 197.0 & \(\pm0.3\)\tabularnewline
+\bottomrule
+\end{longtable}
+
+\textbf{Mitatut jaksonajat:}
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule
+\(t\) & \(10 T/s\) & \(T/s\)\tabularnewline
+\midrule
+\endhead
+1 & 8,12 & 0,812\tabularnewline
+2 & 7,72 & 0,772\tabularnewline
+3 & 7,72 & 0,772\tabularnewline
+4 & 7,97 & 0.797\tabularnewline
+5 & 7,87 & 0.787\tabularnewline
+tarkkuus & \(\pm0.1\) & \(\pm0.01\)\tabularnewline
+\bottomrule
+\end{longtable}
+
+\subsection{Laskennallinen määritys}\label{laskennallinen-maaritys-1}
+
+Pyörän säteen \(R\) mittaamista varten mittasimme halkaisijan
+\(2R=197mm=0.197m\) ja massan \(M=801g=0.801kg\)
+
+\section{Tulosten laskenta}\label{tulosten-laskenta}
+
+Mittaustuloksista laskettiin keskiarvot hitausmomentin laskemista
+varten.
+
+\subsection{Pyörimisliike}\label{pyorimisliike-2}
+
+Punnuksen putoamiseen kuluvan ajan keskiarvoksi saatiin \(t=2.17s\) ja
+vauhtipyörän kierrosten keskiarvoksi saatiin \(n_2=10.85\).\\
+Hitausmomentin suuruudeksi pyörimisliikkeen avulla määritettynä saatiin
+kaavan \(\eqref{hitausmomenttipyorii}\) avulla
+\(I_c = 0,0048kg\cdot m^2\).
+
+\subsection{Heilahdusliike}\label{heilahdusliike-2}
+
+Heilahdusliikkeen heilahduksen jaksonajan keskiarvoksi saatiin
+\(T=0.788s\).\\
+Hitausmomentin suuruudeksi heilahdusliikkeen avulla määritettynä saatiin
+kaavan \(\eqref{hitausmomenttiheiluri}\) avulla laskettuna
+\(I_c = 0,00455kg\cdot m^2\).
+
+\subsection{Laskennallinen määritys}\label{laskennallinen-maaritys-2}
+
+Laskennallisesti määritettynä hitausmomentin suuruudeksi saatiin kaavan
+\(\eqref{hitausmomentti3}\) avulla \(I_c = 0,0039kg\cdot m^2\).
+
+\section{Yhteenveto}\label{yhteenveto}
+
+Eri mittaustavoilla lasketuista hitausmomentin arvoista saadaan
+suhteellisen samat arvot, eli mittauksissa on onnistuttu. Eniten muista
+eroava tulos saatiin pyörimisliike mittauksella. Tämä selittynee
+kuitenkin, sillä että havaitsimme mittauksen aikana resonointia mittaus
+laitteessa, joka voi vaikuttaa tulokseen. Pääpiirteittäin mittauksissa
+kuitenkin onnistuttiin hyvin ja saadut tulokset ovat haluttuja.
+
+\section{Kirjallisuusviitteet}\label{kirjallisuusviitteet}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \url{https://fi.wikipedia.org/wiki/Hitausmomentti}
+\item
+  Fysiikan työt I --työohje, 2.1 Vauhtipyörä {[}Moodle-oppimisalusta{]}.
+  Saatavissa: \url{https://moodle2.tut.fi/} \textgreater{} FYS-1010
+  \textgreater{} Aineistot \textgreater{} Työohjeet \textgreater{}
+  Vauhtipyörä.
+\item
+  Fysiikan työt I --opintomoniste, 2.1 Vauhtipyörä
+  {[}Moodle-oppimisalusta{]}. Saatavissa: \url{https://moodle2.tut.fi/}
+  \textgreater{} FYS-1010 \textgreater{} Aineistot \textgreater{}
+  Opintomoniste \textgreater{} Vauhtipyörä.
+\end{enumerate}
+
+\section{Liitteet}\label{liitteet}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Mittauspyötäkirja
+\end{enumerate}
+\newpage 
+\end{document}

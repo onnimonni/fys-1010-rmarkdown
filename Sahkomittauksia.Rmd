@@ -1,0 +1,133 @@
+---
+institute: TTY
+course: FYS-1010 Fysiikan työt I
+title: 1.2 Sähkömittauksia
+author:
+- name: Onni Hakala
+  id: 218486
+  program: Tietotekniikka
+- name: Pyry Vehmas
+  id: 242160
+  program: Automaatiotekniikka
+
+assistant: MA
+  
+date: 11.4.2017
+output: 
+  pdf_document:
+    citation_package: natbib
+    toc: true
+    number_sections: yes
+    keep_tex: true
+    fig_caption: true
+    template: includes/report.tex
+---
+<!-- Kirjoita työselostus tästä eteenpäin -->
+<!-- Rivin vaihdon saa tehtyä kun laittaa 2 välilyöntiä rivin loppuun -->
+
+```{r, echo=FALSE}
+
+# Create observation data as inline CSV
+CSV_R_PIENI_OIKEA_JANNITE = "
+Jännite, Virta
+0.5 , 1.25
+1.0 , 2.10
+1.5 , 3.25
+2.0 , 4.25
+2.5 , 5.50
+3.0 , 6.50
+3.5 , 7.50
+4.0 , 8.75
+4.5 , 10.0
+"
+
+CSV_R_PIENI_OIKEA_VIRTA = "
+Jännite, Virta
+0.5 , 0.75
+1.0 , 1.50
+1.5 , 2.50
+2.0 , 3.50
+2.5 , 4.50
+3.0 , 5.75
+3.5 , 6.50
+4.0 , 7.75
+4.5 , 8.50
+"
+
+CSV_R_SUURI_OIKEA_JANNITE = "
+Jännite, Virta
+1.0 , 0.20
+2.0 , 0.40
+3.0 , 0.65
+4.0 , 0.90
+5.0 , 1.10
+7.5 , 1.60
+10.0, 2.15
+12.0, 2.60
+14.0, 3.05
+15.0, 3.30
+"
+
+CSV_R_SUURI_OIKEA_VIRTA = "
+Jännite, Virta
+1.0 , 0.15
+2.0 , 0.30
+3.0 , 0.40
+4.0 , 0.55
+5.0 , 0.70
+7.5 , 1.30
+10.0, 1.45
+12.0, 1.70
+14.0, 1.95
+15.0, 2.15
+"
+
+# r_1_v sisältää oikean jännitedatan
+r_1_j = read.csv(text=CSV_R_PIENI_OIKEA_JANNITE, header=TRUE)
+r_1_v = read.csv(text=CSV_R_PIENI_OIKEA_VIRTA, header=T)
+
+r_2_v = read.csv(text=CSV_R_SUURI_OIKEA_VIRTA, header=T)
+r_2_j = read.csv(text=CSV_R_SUURI_OIKEA_JANNITE, header=T)
+```
+
+Test test test!
+
+```{r}
+require(stats)
+
+# Fit regression line for each
+r_1_v_reg <- lm(Virta ~ Jännite, data = r_1_v)
+r_1_j_reg <- lm(Virta ~ Jännite, data = r_1_j)
+
+# Combine data
+r_1_data <- rbind(r_1_j, r_1_v)
+
+# Plot the data
+plot(r_1_data, main=expression('Suurempi vastus R'[1]), ylab = "Virta (mA) ", xlab = "Jännite (V)")
+
+abline(r_1_j_reg, col="blue")
+abline(r_1_v_reg, col="red")
+
+legend("bottomright", title = "Mittaustapa", c("Oikea Jännite","Oikea Virta"), fill=c("Blue","Red"), horiz=FALSE)
+```
+
+
+
+```{r}
+require(stats)
+
+# Fit regression line for each
+r_2_v_reg <- lm(Virta ~ Jännite, data = r_2_v)
+r_2_j_reg <- lm(Virta ~ Jännite, data = r_2_j)
+
+# Combine data
+r_2_data <- rbind(r_2_j, r_2_v)
+
+# Plot the data
+plot(r_2_data, main=expression('Pienempi vastus R'[2]), ylab = "Virta (mA) ", xlab = "Jännite (V)")
+
+abline(r_2_j_reg, col="blue")
+abline(r_2_v_reg, col="red")
+
+legend("bottomright", title = "Mittaustapa", c("Oikea Jännite","Oikea Virta"), fill=c("Blue","Red"), horiz=FALSE)
+```
